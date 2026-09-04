@@ -20,7 +20,7 @@ Prototype model for classifying cyclone intensity from INSAT-3D infrared satelli
 - **Input:** 224×224 IR imagery, single channel replicated to RGB
 
 ## Results
-- **Validation accuracy:** ~40–45% (across multiple runs; see notebook for full training curves)
+- **Validation accuracy:** ~40–45% (across multiple runs; see notebook for full figures)
 - **Known limitation:** Confusion matrix analysis shows majority-class bias — model does not yet cleanly discriminate all 3 classes, consistent with the small per-class sample size (41–50 images). This is a data scarcity issue, not an architectural one. See `gradcam_samples/` for full confusion matrix and training curves.
 
 ## Explainability (Grad-CAM)
