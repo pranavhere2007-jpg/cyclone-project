@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import IntensityBadge from './IntensityBadge';
+import "../index.css";
 
 export default function CycloneCard({ cyclone }) {
   const navigate = useNavigate();
@@ -8,28 +9,28 @@ export default function CycloneCard({ cyclone }) {
   return (
     <div 
       onClick={() => navigate(`/dashboard/${cyclone.id}`)}
-      className="bg-white p-6 rounded-lg shadow border border-gray-100 hover:shadow-lg hover:border-blue-300 cursor-pointer transition-all"
+      className="card clickable-card"
     >
-      <div className="flex justify-between items-start mb-4">
+      <div className="card-header">
         <div>
-          <h3 className="text-xl font-bold text-gray-900">{cyclone.name}</h3>
-          <p className="text-sm text-gray-500 mt-1">ID: {cyclone.id}</p>
+          <h3 className="card-title">{cyclone.name}</h3>
+          <p className="card-subtitle">ID: {cyclone.id}</p>
         </div>
         <IntensityBadge classification={cyclone.classification} />
       </div>
       
-      <div className="space-y-2 mt-4">
-        <div className="flex justify-between">
-          <span className="text-gray-600">Current Wind Speed:</span>
-          <span className="font-semibold text-red-600">{cyclone.windSpeed} km/h</span>
+      <div style={{ marginTop: '1rem' }}>
+        <div className="telemetry-row">
+          <span className="telemetry-label">Current Wind Speed:</span>
+          <span className="telemetry-value danger">{cyclone.windSpeed} km/h</span>
         </div>
-        <div className="flex justify-between">
-          <span className="text-gray-600">Central Pressure:</span>
-          <span className="font-semibold">{cyclone.pressure} hPa</span>
+        <div className="telemetry-row">
+          <span className="telemetry-label">Central Pressure:</span>
+          <span className="telemetry-value">{cyclone.pressure} hPa</span>
         </div>
       </div>
       
-      <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded font-medium hover:bg-blue-700 transition-colors">
+      <button className="btn-primary">
         View Full Dashboard
       </button>
     </div>

@@ -6,12 +6,17 @@ export default function MapView({ pastPath, futurePath, name }) {
   // Center map on the latest known coordinate
   const currentPosition = pastPath[pastPath.length - 1];
 
-  const pastOptions = { color: 'orange', weight: 4, dashArray: '5, 5' };
-  const futureOptions = { color: 'red', weight: 4 };
+  const pastOptions = { color: '#f59e0b', weight: 4, dashArray: '5, 5' }; // Warning orange
+  const futureOptions = { color: '#ef4444', weight: 4 }; // Danger red
 
   return (
-    <div className="h-96 w-full rounded-lg overflow-hidden shadow-md border border-gray-300">
-      <MapContainer center={currentPosition} zoom={6} scrollWheelZoom={false} className="h-full w-full">
+    <div className="map-wrapper">
+      <MapContainer 
+        center={currentPosition} 
+        zoom={6} 
+        scrollWheelZoom={false} 
+        style={{ height: '100%', width: '100%' }}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
