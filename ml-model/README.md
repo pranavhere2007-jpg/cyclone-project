@@ -12,7 +12,7 @@ Prototype model for classifying cyclone intensity from INSAT-3D infrared satelli
   - **High** (Very Severe Cyclonic Storm and above, 64+ kt)
 - Class distribution: Low (50), Moderate (41), High (45)
 
-> **Note:** Production system will use the full 6-tier IMD intensity scale (Depression → Super Cyclonic Storm) trained on IMD's operational multi-channel INSAT-3D archive (IR + water vapor + visible), not this 3-tier public subset.
+> **Note:** Production system will use the full 7-tier IMD intensity scale (Depression → Super Cyclonic Storm) trained on IMD's operational multi-channel INSAT-3D archive (IR + water vapor + visible), not this 3-tier public subset.
 
 ## Model
 - **Architecture:** ResNet50 (ImageNet pretrained), last 5 layers unfrozen and fine-tuned; custom classification head (GlobalAveragePooling → Dense(128) → Dropout(0.3) → Dense(3, softmax))
@@ -34,4 +34,4 @@ Grad-CAM overlays generated for one sample per class to visually validate model 
 - Scale training data via IMD's operational archive (1000+ samples/class target)
 - Multi-channel input (IR + water vapor + visible)
 - Data augmentation tuned for satellite imagery domain (current attempt with generic photo augmentation degraded performance — needs domain-specific approach)
-- Full 6-tier IMD classification scale
+- Full 7-tier IMD classification scale
