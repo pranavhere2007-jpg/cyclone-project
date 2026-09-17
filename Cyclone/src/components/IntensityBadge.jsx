@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function IntensityBadge({ classification }) {
   let typeClass = 'badge-default';
-
+  if (!classification) return (<div><h1>Error</h1></div>)
   if (classification.includes('Super')) {
     typeClass = 'badge-super';
   } else if (classification.includes('Severe')) {

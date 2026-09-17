@@ -12,7 +12,7 @@ export default function ComparisonTable({ currentCyclone, historicalData }) {
         <table className="comparison-table">
           <thead>
             <tr>
-              <th>Cyclone Name</th>
+              <th>Cyclone</th>
               <th>Region</th>
               <th>Max Wind (km/h)</th>
               <th>Damage Scale</th>

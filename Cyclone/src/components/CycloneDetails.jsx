@@ -10,31 +10,31 @@ export default function CycloneDetails({ cyclone }) {
       <div>
         <div className="telemetry-row">
           <span className="telemetry-label">Max Sustained Wind</span>
-          <span className="telemetry-value danger">{cyclone.windSpeed} km/h</span>
+          <span className="telemetry-value danger">{cyclone.wind_speed} {cyclone.wind_speed_unit}</span>
         </div>
         
         <div className="telemetry-row">
           <span className="telemetry-label">Central Pressure</span>
-          <span className="telemetry-value">{cyclone.pressure} hPa</span>
+          <span className="telemetry-value">{cyclone.pressure} {cyclone.pressure_unit}</span>
         </div>
         
         <div className="telemetry-row">
           <span className="telemetry-label">Destructive Scale</span>
           <span className="badge badge-severe">
-            Category {cyclone.destructiveScale}
+            Category {cyclone.destructive_scale}
           </span>
         </div>
         
         <div className="telemetry-row">
           <span className="telemetry-label">Est. Storm Surge</span>
-          <span className="telemetry-value" style={{ color: 'var(--primary)' }}>{cyclone.surgeEstimate} meters</span>
+          <span className="telemetry-value" style={{ color: 'var(--primary)' }}>{cyclone.surge_estimate} {cyclone.surge_unit}</span>
         </div>
 
         <div className="telemetry-row">
           <span className="telemetry-label">Current Status</span>
           <span className="telemetry-value" style={{ color: 'var(--success)', display: 'flex', alignItems: 'center' }}>
             <span className="status-pulse"></span>
-            Active Tracking
+            {cyclone.status}
           </span>
         </div>
       </div>

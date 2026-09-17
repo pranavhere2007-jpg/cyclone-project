@@ -9,7 +9,7 @@ export default function App() {
     <Router>
       <div className="min-h-screen bg-gray-100">
         <header className="app-header">
-          <h1 className="app-title">GovTrak: National Cyclone Command</h1>
+          <h1 className="app-title">OYA: National Cyclone Command</h1>
         </header>
         
         <main className="main-content">

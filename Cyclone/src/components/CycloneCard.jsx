@@ -13,7 +13,7 @@ export default function CycloneCard({ cyclone }) {
     >
       <div className="card-header">
         <div>
-          <h3 className="card-title">{cyclone.name}</h3>
+          <h3 className="card-title">{cyclone.cyclone_name}</h3>
           <p className="card-subtitle">ID: {cyclone.id}</p>
         </div>
         <IntensityBadge classification={cyclone.classification} />
@@ -22,11 +22,11 @@ export default function CycloneCard({ cyclone }) {
       <div style={{ marginTop: '1rem' }}>
         <div className="telemetry-row">
           <span className="telemetry-label">Current Wind Speed:</span>
-          <span className="telemetry-value danger">{cyclone.windSpeed} km/h</span>
+          <span className="telemetry-value danger">{cyclone.wind_speed} {cyclone.wind_speed_unit}</span>
         </div>
         <div className="telemetry-row">
           <span className="telemetry-label">Central Pressure:</span>
-          <span className="telemetry-value">{cyclone.pressure} hPa</span>
+          <span className="telemetry-value">{cyclone.pressure} {cyclone.pressure_unit}</span>
         </div>
       </div>
       

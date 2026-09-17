@@ -4,15 +4,21 @@ import { activeCyclones, historicalData } from '../data/mockData';
 import MapView from '../components/MapView';
 import IntensityBadge from '../components/IntensityBadge';
 import CycloneDetails from '../components/CycloneDetails';
-import ComparisonTable from '../components/ComparisionTable';
+import ComparisonTable from '../components/ComparisonTable'; 
 import "../index.css";
 
 export default function Dashboard() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const cyclone = activeCyclones.find(c => c.id === id);
+  
+  // Use toString() to ensure a match even if the backend returns an integer ID
+  const cyclone = activeCyclones.find(c => c.id.toString() === id);  
 
-  if (!cyclone) return <div>Cyclone data not found.</div>;
+  if (!cyclone) return (
+    <div className="flex items-center justify-center h-64">
+      <h2 className="text-xl font-bold text-gray-500">Cyclone data not found.</h2>
+    </div>
+  );
 
   return (
     <div>
@@ -22,7 +28,8 @@ export default function Dashboard() {
 
       <div className="card dashboard-header">
         <div>
-          <h2 className="page-title" style={{ marginBottom: 0 }}>{cyclone.name}</h2>
+          {/* Fixed the property name from cyclone.name to cyclone.cyclone_name */}
+          <h2 className="page-title" style={{ marginBottom: 0 }}>{cyclone.cyclone_name}</h2>
           <p className="page-subtitle">ID: {cyclone.id}</p>
         </div>
         <IntensityBadge classification={cyclone.classification} />
@@ -32,9 +39,9 @@ export default function Dashboard() {
         {/* Left Column: Map */}
         <div className="map-column">
           <MapView 
-            pastPath={cyclone.pastPath} 
-            futurePath={cyclone.futurePath} 
-            name={cyclone.name} 
+            pastData={cyclone.pastData} 
+            curr_pos={{ lat: cyclone.current_lat, lon: cyclone.current_lon }} 
+            name={cyclone.cyclone_name}
           />
         </div>
 
